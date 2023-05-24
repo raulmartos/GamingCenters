@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">ProyectoDAM_FINAL</string>
+    <string-array name="horas">
+        <item>10:00</item>
+        <item>12:00</item>
+        <item>14:00</item>
+        <item>16:00</item>
+        <item>18:00</item>
+        <item>20:00</item>
+    </string-array>
+    <string-array name="fondos">
+        <item>RocketLeague</item>
+        <item>Valorant</item>
+        <item>LOL</item>
+    </string-array>
+    <string-array name="plataformas">
+        <item>PS5</item>
+        <item>PC</item>
+        <item>XBOX ONE</item>
+    </string-array>
+    <string-array name="lugar">
+        <item>Madrid</item>
+        <item>Barcelona</item>
+        <item>Valencia</item>
+    </string-array>
+    <string-array name="tipo">
+        <item>Standard</item>
+        <item>Deluxe</item>
+        <item>Premium</item>
+    </string-array>
+    <string-array name="status">
+        <item>reserved</item>
+        <item>pending</item>
+        <item>available</item>
+    </string-array>
+</resources>

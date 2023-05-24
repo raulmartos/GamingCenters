@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MongoConfiguration">
+    <option name="shellPath" value="hig55467e34rf3-shard-00-01.bkehr.mongodb.net:27017" />
+  </component>
+</project>
