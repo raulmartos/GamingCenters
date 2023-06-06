@@ -25,36 +25,24 @@ public class CreateGestion extends AppCompatActivity {
         btnReservas = findViewById(R.id.btnReservas);
         btnTorneos = findViewById(R.id.btnTorneos);
 
-        btnUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(CreateGestion.this, CreateUsers.class);
-                startActivity(intent);
-            }
+        btnUsers.setOnClickListener(view -> {
+            Intent intent = new Intent(CreateGestion.this, CreateUsers.class);
+            startActivity(intent);
         });
 
-        btnPrecio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(CreateGestion.this, CreatePrecios.class);
-                startActivity(intent);
-            }
+        btnPrecio.setOnClickListener(view -> {
+            Intent intent = new Intent(CreateGestion.this, CreatePrecios.class);
+            startActivity(intent);
         });
 
-        btnReservas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(CreateGestion.this, CreateBooking.class);
-                startActivity(intent);
-            }
+        btnReservas.setOnClickListener(view -> {
+            Intent intent = new Intent(CreateGestion.this, CreateBooking.class);
+            startActivity(intent);
         });
 
-        btnTorneos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(CreateGestion.this, CreateTorneos.class);
-                startActivity(intent);
-            }
+        btnTorneos.setOnClickListener(view -> {
+            Intent intent = new Intent(CreateGestion.this, CreateTorneos.class);
+            startActivity(intent);
         });
     }
 

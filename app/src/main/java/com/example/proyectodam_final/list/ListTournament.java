@@ -23,33 +23,5 @@ public class ListTournament extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_tournament);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.calov.click/getTournaments/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        TournamentApiService apiService = retrofit.create(TournamentApiService.class);
-        LinearLayout linearLayout = findViewById(R.id.llTorunament);
-        adapter = new TournamentAdapter(new ArrayList<>());
-
-        //linearLayout.addView(adapter);
-
-        Call<List<Tournament>> call = apiService.getTournaments();
-
-        call.enqueue(new Callback<List<Tournament>>() {
-            public void onResponse(Call<List<Tournament>> call, Response<List<Tournament>> response) {
-                if (response.isSuccessful()) {
-                    List<Tournament> tournaments = response.body();
-                    adapter.setTournaments(tournaments);
-                } else {
-                    // Mostrar error si la respuesta no fue exitosa
-                }
-            }
-
-            public void onFailure(Call<List<Tournament>> call, Throwable t) {
-                // Mostrar error si la petición falla
-            }
-        });
-
     }
 }

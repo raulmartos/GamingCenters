@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "995903976282",
+    "firebase_url": "https://proyectodam-c4a8c-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "proyectodam-c4a8c",
+    "storage_bucket": "proyectodam-c4a8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995903976282:android:e25bca15cc6f1d4d0df963",
+        "android_client_info": {
+          "package_name": "com.example.proyectodam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995903976282-enpen18er3jt5ta90clm5fg9pcual2ej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKvsClaZM9QzjxYWWZzuGZsvrAsdDhoe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995903976282-enpen18er3jt5ta90clm5fg9pcual2ej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995903976282:android:6f9e62bb8af0b8640df963",
+        "android_client_info": {
+          "package_name": "com.example.proyectodam_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995903976282-enpen18er3jt5ta90clm5fg9pcual2ej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKvsClaZM9QzjxYWWZzuGZsvrAsdDhoe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995903976282-enpen18er3jt5ta90clm5fg9pcual2ej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

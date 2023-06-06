@@ -1,18 +1,11 @@
 package com.example.proyectodam_final.pojo;
 public class Tournament {
-    private String title;
-    private String date;
-    private String hour;
-    private String location;
-    private double priceEntry;
-    private double reward;
-    private String platform;
-    private int totalPlayers;
-    private int inscribedPlayers;
-    private String background;
+    private String title, date, hour, location, platform;
+    private double priceEntry, reward;
+    private int totalPlayers, inscribedPlayers;
 
     public Tournament(String title, String date, String hour, String location, double priceEntry, double reward,
-                      String platform, int totalPlayers, int inscribedPlayers, String background) {
+                      String platform, int totalPlayers, int inscribedPlayers) {
         this.title = title;
         this.date = date;
         this.hour = hour;
@@ -22,7 +15,6 @@ public class Tournament {
         this.platform = platform;
         this.totalPlayers = totalPlayers;
         this.inscribedPlayers = inscribedPlayers;
-        this.background = background;
     }
 
     public String getTitle() {
@@ -61,7 +53,4 @@ public class Tournament {
         return inscribedPlayers;
     }
 
-    public String getBackground() {
-        return background;
-    }
 }

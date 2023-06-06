@@ -21,20 +21,14 @@ public class MainActivity extends AppCompatActivity {
         btnGestion = findViewById(R.id.btnGestion);
         btnList = findViewById(R.id.btnVer);
 
-        btnGestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, CreateGestion.class);
-                startActivity(intent);
-            }
+        btnGestion.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CreateGestion.class);
+            startActivity(intent);
         });
 
-        btnList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, ListGestion.class);
-                startActivity(intent);
-            }
+        btnList.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ListGestion.class);
+            startActivity(intent);
         });
 
     }

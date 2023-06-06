@@ -34,7 +34,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
         holder.tvSeat.setText("Silla: " + booking.getSeat());
         holder.tvUser.setText("Usuario: " + booking.getUser());
         holder.tvDate.setText("Fecha: " + booking.getDate());
-        holder.tvStatus.setText("Estado: " + booking.getStatus());
     }
 
     @Override
@@ -50,14 +49,13 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
         TextView tvSeat;
         TextView tvUser;
         TextView tvDate;
-        TextView tvStatus;
+
 
         BookingViewHolder(View itemView) {
             super(itemView);
             tvSeat = itemView.findViewById(R.id.tvSeat);
             tvUser = itemView.findViewById(R.id.tvUser);
             tvDate = itemView.findViewById(R.id.tvDate);
-            tvStatus = itemView.findViewById(R.id.tvStatus);
         }
     }
 }
