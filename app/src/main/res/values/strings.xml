@@ -28,11 +28,6 @@
         <item>Deluxe</item>
         <item>Premium</item>
     </string-array>
-    <string-array name="status">
-        <item>reserved</item>
-        <item>pending</item>
-        <item>available</item>
-    </string-array>
     <string-array name="roles">
         <item>Admin</item>
         <item>Usuario Estándar</item>

@@ -1,99 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:background="#D7D6D7"
-                                                   tools:context=".create.CreateBooking">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D7D6D7"
+    tools:context=".create.CreateBooking">
 
     <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="314dp"
-            android:layout_height="530dp"
-            android:scaleType="fitStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/top_background" app:layout_constraintHorizontal_bias="0.01"
-    />
-    <TextView
-            android:id="@+id/tvTituloRes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RESERVAS"
-            android:textColor="#ffffff"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp" android:layout_marginStart="10dp"/>
-    <EditText
-            android:id="@+id/edtSilla"
-            android:layout_width="263dp"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            android:background="@drawable/recuadros"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintTop_toTopOf="@+id/imageView5" android:layout_marginTop="212dp"
-            app:layout_constraintHorizontal_bias="0.486"/>
-    <EditText
-            android:id="@+id/edtCliente"
-            android:layout_width="263dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/recuadros"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/edtSilla"/>
+        android:id="@+id/imageView5"
+        android:layout_width="314dp"
+        android:layout_height="530dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background" />
 
-    <EditText
-            android:id="@+id/edtFecha"
-            android:layout_width="263dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:inputType="date"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/recuadros"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/edtCliente"
-            tools:ignore="SpeakableTextPresentCheck"/>
+    <TextView
+        android:id="@+id/tvTituloRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:text="RESERVAS"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Spinner
-            android:id="@+id/spEstado"
-            android:layout_width="263dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/recuadros"
-            android:textStyle="bold"
-            android:entries="@array/status"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtFecha"/>
+        android:id="@+id/spSilla"
+        android:layout_width="263dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="212dp"
+        android:background="@drawable/recuadros"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <EditText
+        android:id="@+id/edtCliente"
+        android:layout_width="263dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/recuadros"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Usuario"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spSilla" />
+
+    <EditText
+        android:id="@+id/edtFecha"
+        android:layout_width="263dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/recuadros"
+        android:ems="10"
+        android:inputType="date"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCliente"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAgregarRes"
-            android:layout_width="302dp"
-            android:layout_height="59dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/button"
-            android:text="Añadir Reserva"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"/>
+        android:id="@+id/btnAgregarRes"
+        android:layout_width="302dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button"
+        android:text="Añadir Reserva"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
