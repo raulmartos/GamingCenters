@@ -31,6 +31,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class CreateUsers extends AppCompatActivity {
 
@@ -40,6 +41,8 @@ public class CreateUsers extends AppCompatActivity {
     private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private Calendar date;
     final List<String> iconList = Arrays.asList("black", "groot", "jake", "rick", "sonic", "walter");
+    private final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+            "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
     @Override
@@ -74,6 +77,8 @@ public class CreateUsers extends AppCompatActivity {
             Toast.makeText(CreateUsers.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
         } else if (spIcon.getSelectedItemPosition() == 0) {
             Toast.makeText(CreateUsers.this, "Debes seleccionar un icono", Toast.LENGTH_SHORT).show();
+        } else if (!emailValidator(edtEmail.getText().toString())) {
+            Toast.makeText(CreateUsers.this, "El email debe tener un formato válido", Toast.LENGTH_SHORT).show();
         } else {
             usernameChecker(userName, result -> {
                 if (result == 0) {
@@ -135,6 +140,12 @@ public class CreateUsers extends AppCompatActivity {
     interface UsernameCheckCallback {
         void onUsernameChecked(int result);
     }
+
+    private boolean emailValidator(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        return pattern.matcher(email).matches();
+    }
+
 
     private void spinnerInfo() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles, android.R.layout.simple_spinner_item);
