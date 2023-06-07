@@ -41,8 +41,6 @@ public class CreateUsers extends AppCompatActivity {
     private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private Calendar date;
     final List<String> iconList = Arrays.asList("black", "groot", "jake", "rick", "sonic", "walter");
-    private final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-            "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
     @Override
@@ -142,6 +140,8 @@ public class CreateUsers extends AppCompatActivity {
     }
 
     private boolean emailValidator(String email) {
+        final String EMAIL_REGEX = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@" +
+                "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         return pattern.matcher(email).matches();
     }

@@ -30,32 +30,4 @@ import java.util.Map;
 
 public class ListBooking extends AppCompatActivity {
 
-    private BookingAdapter adapter;
-    private List<Booking> bookingList;
-    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_booking);
-
-        DatabaseReference dbReference = database.getReference("bookings");
-        dbReference.child("bookings").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                bookingList = new ArrayList<>();
-                for (DataSnapshot bookingSnapshot : dataSnapshot.getChildren()) {
-                    Booking booking = bookingSnapshot.getValue(Booking.class);
-                    bookingList.add(booking);
-                }
-                RecyclerView recyclerView = findViewById(R.id.rvBooking);
-                recyclerView.setLayoutManager(new LinearLayoutManager(ListBooking.this));
-                adapter = new BookingAdapter(bookingList);
-                recyclerView.setAdapter(adapter);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
 }

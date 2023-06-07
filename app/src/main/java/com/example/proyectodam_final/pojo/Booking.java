@@ -4,13 +4,14 @@ public class Booking {
     private String seat;
     private String user;
     private String date;
+    private boolean status;
 
 
-    public Booking(String seat, String user, String date) {
+    public Booking(String seat, String user, String date, boolean status) {
         this.seat = seat;
         this.user = user;
         this.date = date;
-
+        this.status = status;
     }
 
     public String getSeat() {
@@ -35,6 +36,14 @@ public class Booking {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
 
