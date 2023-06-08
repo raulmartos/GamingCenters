@@ -5,13 +5,21 @@ public class Booking {
     private String user;
     private String date;
     private boolean status;
+    private String createdAt;
 
 
-    public Booking(String seat, String user, String date, boolean status) {
+    public Booking(String seat, String user, String date, boolean status, String createdAt) {
         this.seat = seat;
         this.user = user;
         this.date = date;
         this.status = status;
+        this.createdAt = createdAt;
+    }
+
+    public Booking(String seat, String user, String date) {
+        this.seat = seat;
+        this.user = user;
+        this.date = date;
     }
 
     public String getSeat() {

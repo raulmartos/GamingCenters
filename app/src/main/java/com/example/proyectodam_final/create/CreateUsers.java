@@ -82,8 +82,7 @@ public class CreateUsers extends AppCompatActivity {
                 if (result == 0) {
                     Toast.makeText(CreateUsers.this, "El nombre de usuario ya existe", Toast.LENGTH_SHORT).show();
                 } else {
-                    User user = fetchUserData();
-                    FirebaseDatabase.getInstance().getReference().child("users").child(userName).setValue(user);
+                    FirebaseDatabase.getInstance().getReference().child("users").child(userName).setValue(fetchUserData());
                     Toast.makeText(CreateUsers.this, "Usuario creado!", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -130,7 +129,7 @@ public class CreateUsers extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(CreateUsers.this, "An error occurred: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateUsers.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

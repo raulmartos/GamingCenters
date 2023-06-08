@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -16,15 +17,23 @@ import android.widget.Toast;
 import android.widget.AdapterView;
 
 import com.example.proyectodam_final.R;
+import com.example.proyectodam_final.pojo.Booking;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class CreateBooking extends AppCompatActivity {
 
@@ -51,9 +60,18 @@ public class CreateBooking extends AppCompatActivity {
         edtCliente = findViewById(R.id.edtCliente);
         edtFecha = findViewById(R.id.edtFecha);
     }
-    /*private Booking fetchBookingData(){
+
+    private void addBooking() {
+        FirebaseDatabase.getInstance().getReference().child("bookings").child(spinnerValue()).setValue(fetchBookingData());
+    }
+
+    private Booking fetchBookingData() {
+        String silla = spinnerValue();
+        String cliente = edtCliente.getText().toString();
         String date = validateDate();
-    }*/
+        long createdAt = getCurrentTime();
+        return new Booking(silla, cliente, date);
+    }
 
     private void datePicker() {
         Calendar calendar = Calendar.getInstance();
@@ -100,8 +118,6 @@ public class CreateBooking extends AppCompatActivity {
                     isFirstSelection = false;
                 } else if (position == 0) {
                     spSilla.setSelection(1);
-                } else {
-                    String selectedItem = (String) parent.getItemAtPosition(position);
                 }
             }
 
@@ -112,5 +128,13 @@ public class CreateBooking extends AppCompatActivity {
         spSilla.setSelection(0);
     }
 
-}
+    private String spinnerValue() {
+        int position = spSilla.getSelectedItemPosition();
+        return spSilla.getItemAtPosition(position).toString();
+    }
 
+    private long getCurrentTime() {
+        return Instant.now().getEpochSecond();
+    }
+
+}
