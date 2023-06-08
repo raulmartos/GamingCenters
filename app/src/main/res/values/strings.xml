@@ -24,6 +24,7 @@
         <item>Valencia</item>
     </string-array>
     <string-array name="tipo">
+        <item>Desplegar tipo</item>
         <item>Standard</item>
         <item>Deluxe</item>
         <item>Premium</item>
