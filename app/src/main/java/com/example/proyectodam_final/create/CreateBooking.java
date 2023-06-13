@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
@@ -33,7 +34,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 public class CreateBooking extends AppCompatActivity {
 
@@ -42,8 +42,9 @@ public class CreateBooking extends AppCompatActivity {
     private EditText edtCliente, edtFecha;
     private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private Calendar date;
-    final List<String> sillaList = Arrays.asList("Selecciona una reserva: ", "Fila 1 - Silla 1", "Fila 1 - Silla 2", "Fila 1 - Silla 3", "Fila 1 - Silla 4 ",
-            "Fila 2 - Silla 1", "Fila 2 - Silla 2", "Fila 2 - Silla 3", "Fila 2 - Silla 4", "Fila 2 - Silla 4");
+    final List<String> sillaList = Arrays.asList("Selecciona una reserva: ", "Fila 1 - Silla 1", "Fila 1 - Silla 2", "Fila 1 - Silla 3", "Fila 1 - Silla 4",
+            "Fila 2 - Silla 1", "Fila 2 - Silla 2", "Fila 2 - Silla 3", "Fila 2 - Silla 4",
+            "Fila 3 - Silla 1", "Fila 3 - Silla 2", "Fila 3 - Silla 3", "Fila 3 - Silla 4");
     private boolean isFirstSelection = true;
 
     @Override
@@ -53,24 +54,63 @@ public class CreateBooking extends AppCompatActivity {
         elementMatcher();
         edtFecha.setOnClickListener(v -> datePicker());
         spinnerInfo();
+        btnAddBooking.setOnClickListener(v -> updateBooking());
     }
 
     private void elementMatcher() {
+        btnAddBooking = findViewById(R.id.btnAgregarRes);
         spSilla = findViewById(R.id.spSilla);
         edtCliente = findViewById(R.id.edtCliente);
         edtFecha = findViewById(R.id.edtFecha);
+        edtFecha.setFocusable(false);
     }
 
-    private void addBooking() {
-        FirebaseDatabase.getInstance().getReference().child("bookings").child(spinnerValue()).setValue(fetchBookingData());
+    private void updateBooking() {
+        if (!valueChecker().isEmpty()) {
+            Toast.makeText(CreateBooking.this, valueChecker(), Toast.LENGTH_SHORT).show();
+        } else {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bookings");
+            Query query = ref.orderByChild("name").equalTo(spinnerValue());
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    DataSnapshot bookingSnapshot = snapshot.getChildren().iterator().next();
+                    String bookingKey = bookingSnapshot.getKey();
+                    assert bookingKey != null;
+                    DatabaseReference bookingsRef = ref.child(bookingKey);
+                    bookingsRef.setValue(fetchBookingData());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(CreateBooking.this, "Error creando la reserva", Toast.LENGTH_SHORT).show();
+                }
+            });
+            Toast.makeText(CreateBooking.this, "Reserva añadida!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
+    private String valueChecker() {
+        if (edtCliente.getText().toString().isEmpty()) {
+            return "Debes incluir tu nombre de usuario";
+        } else if (spinnerValue().equals(sillaList.get(0))) {
+            return "Debes seleccionar una reserva válida";
+        } else if (validateDate().equals("")) {
+            return "Debes seleccionar una fecha válida";
+        } else if (!retrievedBookingStatus(spinnerValue())) {
+            return "Reserva no disponible, selecciona otra";
+        }
+        return "";
+    }
+
+    @NonNull
     private Booking fetchBookingData() {
-        String silla = spinnerValue();
         String cliente = edtCliente.getText().toString();
         String date = validateDate();
         long createdAt = getCurrentTime();
-        return new Booking(silla, cliente, date);
+        boolean status = true;
+        return new Booking(cliente, date, status, createdAt);
     }
 
     private void datePicker() {
@@ -137,4 +177,14 @@ public class CreateBooking extends AppCompatActivity {
         return Instant.now().getEpochSecond();
     }
 
+    private Booking retrieveBooking(String reserva) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bookings");
+        Query query = ref.orderByChild("name").equalTo(reserva);
+        DataSnapshot snapshot = query.get().getResult().getChildren().iterator().next();
+        return snapshot.getValue(Booking.class);
+    }
+
+    private boolean retrievedBookingStatus(String reserva) {
+        return retrieveBooking(reserva).isStatus();
+    }
 }

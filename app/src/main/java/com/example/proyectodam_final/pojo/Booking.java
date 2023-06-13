@@ -1,33 +1,23 @@
 package com.example.proyectodam_final.pojo;
 
 public class Booking {
-    private String seat;
     private String user;
     private String date;
     private boolean status;
-    private String createdAt;
+    private long createdAt;
 
 
-    public Booking(String seat, String user, String date, boolean status, String createdAt) {
-        this.seat = seat;
+    public Booking(String user, String date, boolean status, long createdAt) {
         this.user = user;
         this.date = date;
         this.status = status;
         this.createdAt = createdAt;
     }
 
-    public Booking(String seat, String user, String date) {
-        this.seat = seat;
+    public Booking(String user, String date, long createdAt) {
         this.user = user;
         this.date = date;
-    }
-
-    public String getSeat() {
-        return seat;
-    }
-
-    public void setSeat(String seat) {
-        this.seat = seat;
+        this.createdAt = createdAt;
     }
 
     public String getUser() {
@@ -52,6 +42,14 @@ public class Booking {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public long getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

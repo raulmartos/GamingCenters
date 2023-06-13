@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.proyectodam_final.R;
+import com.example.proyectodam_final.UsernameCheckCallback;
 import com.example.proyectodam_final.list.UserIconAdapter;
 import com.example.proyectodam_final.pojo.User;
 import com.google.firebase.database.DataSnapshot;
@@ -132,10 +133,6 @@ public class CreateUsers extends AppCompatActivity {
                 Toast.makeText(CreateUsers.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    interface UsernameCheckCallback {
-        void onUsernameChecked(int result);
     }
 
     private boolean emailValidator(String email) {
