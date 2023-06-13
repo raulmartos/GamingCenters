@@ -1,11 +1,15 @@
 package com.example.proyectodam_final.pojo;
+
+import android.widget.EditText;
+import android.widget.Spinner;
+
 public class Tournament {
     private String title, date, hour, location, platform;
     private double priceEntry, reward;
-    private int totalPlayers, inscribedPlayers;
+    private int totalPlayers;
 
     public Tournament(String title, String date, String hour, String location, double priceEntry, double reward,
-                      String platform, int totalPlayers, int inscribedPlayers) {
+                      String platform, int totalPlayers) {
         this.title = title;
         this.date = date;
         this.hour = hour;
@@ -14,7 +18,6 @@ public class Tournament {
         this.reward = reward;
         this.platform = platform;
         this.totalPlayers = totalPlayers;
-        this.inscribedPlayers = inscribedPlayers;
     }
 
     public String getTitle() {
@@ -47,10 +50,6 @@ public class Tournament {
 
     public int getTotalPlayers() {
         return totalPlayers;
-    }
-
-    public int getInscribedPlayers() {
-        return inscribedPlayers;
     }
 
 }

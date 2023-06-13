@@ -37,16 +37,29 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
             <EditText
+                    android:id="@+id/edtTitulo"
+                    android:layout_width="263dp"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Titulo"
+                    android:background="@drawable/recuadros"
+                    android:textStyle="bold"
+                    tools:ignore="Autofill,HardcodedText,MissingConstraints"
+            />
+            <EditText
                     android:id="@+id/edtJugadoresTot"
                     android:layout_width="263dp"
                     android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="24dp"
+                    android:hint="Jugadores Totales"
                     android:contentDescription="Jugadores Totales"
                     android:background="@drawable/recuadros"
                     android:textStyle="bold"
                     android:ems="10"
                     android:inputType="number"
-                    tools:ignore="EditableContentDescCheck"/>
+                    tools:ignore="EditableContentDescCheck"
+            />
             <Spinner
                     android:id="@+id/spLugar"
                     android:layout_width="263dp"
@@ -56,43 +69,25 @@
                     android:background="@drawable/recuadros"
                     android:textStyle="bold"
             />
-            <Spinner
-                    android:id="@+id/spFondo"
-                    android:layout_width="263dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
-                    android:entries="@array/fondos"
-                    android:background="@drawable/recuadros"
-                    android:textStyle="bold"
-            />
             <EditText
                     android:id="@+id/edtPrecio"
                     android:layout_width="263dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="24dp"
                     android:contentDescription="Precio"
+                    android:hint="Precio Entrada"
                     android:background="@drawable/recuadros"
                     android:textStyle="bold"
                     android:ems="10"
                     android:inputType="number"
                     tools:ignore="EditableContentDescCheck"/>
             <EditText
-                    android:id="@+id/edtTitulo"
-                    android:layout_width="263dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name"
-                    android:background="@drawable/recuadros"
-                    android:textStyle="bold"
-                    tools:ignore="Autofill,HardcodedText,MissingConstraints"/>
-            <EditText
                     android:id="@+id/edtFecha"
                     android:layout_width="263dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="24dp"
                     android:contentDescription="Fecha"
+                    android:hint="Fecha"
                     android:background="@drawable/recuadros"
                     android:textStyle="bold"
                     android:ems="10"
@@ -121,6 +116,7 @@
                     android:layout_width="263dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="24dp"
+                    android:hint="Recompensa"
                     android:contentDescription="Recompensa"
                     android:background="@drawable/recuadros"
                     android:textStyle="bold"
@@ -134,6 +130,7 @@
             android:layout_width="302dp"
             android:layout_height="59dp"
             android:background="@drawable/button"
+            android:layout_gravity="end|bottom"
             android:text="AGREGAR"
             android:textColor="@color/white"
             android:textStyle="bold"
