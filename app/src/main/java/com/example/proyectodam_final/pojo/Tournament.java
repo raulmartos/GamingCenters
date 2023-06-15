@@ -3,7 +3,9 @@ package com.example.proyectodam_final.pojo;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class Tournament {
+import java.io.Serializable;
+
+public class Tournament implements Serializable {
     private String title, date, hour, location, platform;
     private double priceEntry, reward;
     private int totalPlayers;

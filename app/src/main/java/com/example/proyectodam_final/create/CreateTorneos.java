@@ -1,6 +1,7 @@
 package com.example.proyectodam_final.create;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.*;
 import androidx.annotation.NonNull;
@@ -8,17 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import com.example.proyectodam_final.R;
+import com.example.proyectodam_final.delete.DeleteTorneo;
 import com.example.proyectodam_final.pojo.Tournament;
-import com.example.proyectodam_final.pojo.User;
 import com.google.firebase.database.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.*;
 
 public class CreateTorneos extends AppCompatActivity {
 
@@ -128,9 +126,10 @@ public class CreateTorneos extends AppCompatActivity {
                     finish();
                 }
             });
+
+
         }
     }
-
     private void tournamentTitleChecker(String tournamentTitle, final TournamentTitleCheckCallback callback) {
         DatabaseReference tournamentsRef = FirebaseDatabase.getInstance().getReference().child("tournaments");
         tournamentsRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -161,7 +160,6 @@ public class CreateTorneos extends AppCompatActivity {
     interface TournamentTitleCheckCallback {
         void onTournamentTitleChecked(int result);
     }
-
 
     private boolean valueChecker() {
         return !edtJugadores.getText().toString().isEmpty()
