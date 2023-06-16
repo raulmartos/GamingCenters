@@ -81,6 +81,12 @@
         <activity
                 android:name="com.example.proyectodam_final.delete.DeleteTorneo"
         />
+        <activity
+                android:name="com.example.proyectodam_final.delete.DeleteUser"
+        />
+        <activity
+                android:name="com.example.proyectodam_final.delete.DeletePrecio"
+        />
     </application>
 
 </manifest>
