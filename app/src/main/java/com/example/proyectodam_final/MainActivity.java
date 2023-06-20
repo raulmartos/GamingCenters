@@ -1,7 +1,6 @@
 package com.example.proyectodam_final;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnGestion;
     Button btnList;
+    Button btnEliminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnGestion = findViewById(R.id.btnGestion);
         btnList = findViewById(R.id.btnVer);
+        btnEliminar = findViewById(R.id.btnEliminar);
 
         btnGestion.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, CreateGestion.class);
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnList.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, ListGestion.class);
+            startActivity(intent);
+        });
+
+        btnEliminar.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, DeleteGestion.class);
             startActivity(intent);
         });
 

@@ -38,7 +38,6 @@ public class TournamentAdapter {
             TextView rewardTextView = itemView.findViewById(R.id.tvReward);
             TextView platformTextView = itemView.findViewById(R.id.tvPlatform);
             TextView totalPlayersTextView = itemView.findViewById(R.id.tvTotalPlayers);
-            TextView inscribedPlayersTextView = itemView.findViewById(R.id.tvInscribedPlayers);
             //ImageView backgroundImageView = itemView.findViewById(R.id.ivBackground);
 
             titleTextView.setText(tournament.getTitle());
@@ -49,7 +48,6 @@ public class TournamentAdapter {
             rewardTextView.setText(String.valueOf(tournament.getReward()));
             platformTextView.setText(tournament.getPlatform());
             totalPlayersTextView.setText(String.valueOf(tournament.getTotalPlayers()));
-            inscribedPlayersTextView.setText(String.valueOf(tournament.getInscribedPlayers()));
             // Aquí puedes cargar la imagen de fondo del torneo usando Picasso o Glide, por ejemplo:
             // Picasso.get().load(tournament.getBackground()).into(backgroundImageView);
 
