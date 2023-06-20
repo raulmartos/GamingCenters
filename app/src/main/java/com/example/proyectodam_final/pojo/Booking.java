@@ -3,11 +3,18 @@ package com.example.proyectodam_final.pojo;
 public class Booking {
     private String user;
     private String date;
-    private boolean status;
+    private String status;
     private long createdAt;
 
+    public Booking() {
+    }
 
-    public Booking(String user, String date, boolean status, long createdAt) {
+    public Booking(String user, String status) {
+        this.user = user;
+        this.status = status;
+    }
+
+    public Booking(String user, String date, String status, long createdAt) {
         this.user = user;
         this.date = date;
         this.status = status;
@@ -36,11 +43,11 @@ public class Booking {
         this.date = date;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

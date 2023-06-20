@@ -29,6 +29,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -52,8 +54,9 @@ public class CreateBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservas);
         elementMatcher();
-        edtFecha.setOnClickListener(v -> datePicker());
         spinnerInfo();
+        //autoUpdateStatus();
+        edtFecha.setOnClickListener(v -> datePicker());
         btnAddBooking.setOnClickListener(v -> updateBooking());
     }
 
@@ -70,23 +73,47 @@ public class CreateBooking extends AppCompatActivity {
             Toast.makeText(CreateBooking.this, valueChecker(), Toast.LENGTH_SHORT).show();
         } else {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bookings");
-            Query query = ref.orderByChild("name").equalTo(spinnerValue());
+            Query query = ref.orderByKey().equalTo(spinnerValue());
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    DataSnapshot bookingSnapshot = snapshot.getChildren().iterator().next();
-                    String bookingKey = bookingSnapshot.getKey();
-                    assert bookingKey != null;
-                    DatabaseReference bookingsRef = ref.child(bookingKey);
-                    bookingsRef.setValue(fetchBookingData());
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        DataSnapshot bookingSnapshot = dataSnapshot.getChildren().iterator().next();
+                        Booking booking = bookingSnapshot.getValue(Booking.class);
+
+                        if (booking != null) {
+                            String status = booking.getStatus();
+                            Date newDate;
+                            Date bookingDate;
+                            try {
+                                newDate = dateFormat.parse(validateDate());
+                                bookingDate = dateFormat.parse(booking.getDate());
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+                            if(newDate != null && bookingDate != null){
+                                if (status.equals("booked") && invalidDate(newDate, bookingDate)) {
+                                    Toast.makeText(CreateBooking.this, "Reserva no disponible", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    booking.setUser(edtCliente.getText().toString());
+                                    booking.setDate(validateDate());
+                                    booking.setStatus("booked");
+                                    booking.setCreatedAt(getCurrentTime());
+                                    bookingSnapshot.getRef().setValue(booking);
+
+                                    Toast.makeText(CreateBooking.this, "Reserva hecha!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                        }
+                    }
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(CreateBooking.this, "Error creando la reserva", Toast.LENGTH_SHORT).show();
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(CreateBooking.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
-            Toast.makeText(CreateBooking.this, "Reserva añadida!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -98,19 +125,8 @@ public class CreateBooking extends AppCompatActivity {
             return "Debes seleccionar una reserva válida";
         } else if (validateDate().equals("")) {
             return "Debes seleccionar una fecha válida";
-        } else if (!retrievedBookingStatus(spinnerValue())) {
-            return "Reserva no disponible, selecciona otra";
         }
         return "";
-    }
-
-    @NonNull
-    private Booking fetchBookingData() {
-        String cliente = edtCliente.getText().toString();
-        String date = validateDate();
-        long createdAt = getCurrentTime();
-        boolean status = true;
-        return new Booking(cliente, date, status, createdAt);
     }
 
     private void datePicker() {
@@ -130,7 +146,7 @@ public class CreateBooking extends AppCompatActivity {
     private String validateDate() {
         String input = edtFecha.getText().toString().trim();
         if (TextUtils.isEmpty(input)) {
-            Toast.makeText(this, "Escribe una fecha válida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateBooking.this, "Escribe una fecha válida", Toast.LENGTH_SHORT).show();
             return "";
         }
         try {
@@ -138,11 +154,11 @@ public class CreateBooking extends AppCompatActivity {
             if (date != null) {
                 return input;
             } else {
-                Toast.makeText(this, "Formato inválido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateBooking.this, "Formato inválido", Toast.LENGTH_SHORT).show();
                 return "";
             }
         } catch (ParseException e) {
-            Toast.makeText(this, "Formato inválido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateBooking.this, "Formato inválido", Toast.LENGTH_SHORT).show();
         }
         return "null";
     }
@@ -177,14 +193,31 @@ public class CreateBooking extends AppCompatActivity {
         return Instant.now().getEpochSecond();
     }
 
-    private Booking retrieveBooking(String reserva) {
+    /*private void autoUpdateStatus(){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bookings");
-        Query query = ref.orderByChild("name").equalTo(reserva);
-        DataSnapshot snapshot = query.get().getResult().getChildren().iterator().next();
-        return snapshot.getValue(Booking.class);
-    }
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Booking booking = snapshot.getValue(Booking.class);
+                    if (booking != null) {
+                        LocalDate today = LocalDate.now();
+                        LocalDate bookingDate = LocalDate.parse(booking.getDate(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                        if (bookingDate.isEqual(today) || bookingDate.isBefore(today)) {
+                            snapshot.getRef().child("user").setValue("");
+                            snapshot.getRef().child("status").setValue("free");
+                        }
+                    }
+                }
+            }
 
-    private boolean retrievedBookingStatus(String reserva) {
-        return retrieveBooking(reserva).isStatus();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(CreateBooking.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }*/
+    private boolean invalidDate(Date newDate, Date bookingDate) {
+        return newDate.before(bookingDate) || newDate.equals(bookingDate);
     }
 }
