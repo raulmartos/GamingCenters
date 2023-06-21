@@ -6,14 +6,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#D7D6D7"
-        tools:context=".create.CreateTorneos">
+        tools:context=".create.CreateBooking">
 
     <TextView
-            android:text="Selecciona el torneo"
+            android:text="Selecciona la reserva"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView8"
+            android:layout_height="wrap_content" android:id="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="232dp" android:layout_marginStart="112dp" android:textColor="#068151"
+            android:layout_marginTop="232dp" android:layout_marginStart="108dp" android:textColor="#068151"
             android:textSize="20sp"/>
     <ImageView
             android:id="@+id/imageView4"
@@ -27,10 +27,10 @@
             app:layout_constraintHorizontal_bias="0.0"/>
 
     <TextView
-            android:id="@+id/PRECIOS"
+            android:id="@+id/reservas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TORNEOS"
+            android:text="RESERVAS"
             android:textColor="#ffffff"
             android:textSize="40dp"
             android:textStyle="bold"
@@ -41,24 +41,23 @@
             android:layout_marginStart="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDelete"
+            android:id="@+id/btnDeleteBooking"
             android:layout_width="302dp"
             android:layout_height="59dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/button"
-            android:layout_gravity="end|bottom"
-            android:text="Eliminar Torneo"
+            android:text="Eliminar Reserva"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="60dp"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.498"
     />
     <Spinner
             android:layout_width="302dp"
             android:layout_height="59dp"
-            android:id="@+id/spDelTournaments"
+            android:id="@+id/spDelBooking"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="52dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="292dp"

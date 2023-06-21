@@ -7,6 +7,13 @@
                                                    android:background="#D7D6D7"
                                                    tools:context=".list.ListPrecios">
 
+    <TextView
+            android:text="Editar precios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView3"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="212dp" android:layout_marginStart="144dp" android:textColor="#068151"
+            android:textSize="20sp"/>
     <ImageView
             android:id="@+id/imageView6"
             android:layout_width="314dp"
@@ -27,7 +34,7 @@
             android:textStyle="bold"
             tools:ignore="MissingConstraints"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp" android:layout_marginStart="10dp"/>
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp"/>
     <Spinner
             android:id="@+id/spTipo"
             android:layout_width="263dp"
@@ -57,13 +64,13 @@
             android:layout_width="302dp"
             android:layout_height="59dp"
             android:layout_marginBottom="50dp"
+            android:text="Guardar Precio"
             android:background="@drawable/button"
-            android:entries="@array/tipo"
-            android:text="Guardar"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

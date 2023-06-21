@@ -8,6 +8,13 @@
         android:background="#D7D6D7"
         tools:context=".create.CreateTorneos">
 
+    <TextView
+            android:text="Selecciona el usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView9"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="240dp" android:layout_marginStart="108dp" android:textColor="#068151"
+            android:textSize="20sp"/>
     <ImageView
             android:id="@+id/imageView4"
             android:layout_width="314dp"
@@ -39,7 +46,7 @@
             android:layout_height="59dp"
             android:background="@drawable/button"
             android:layout_gravity="end|bottom"
-            android:text="ELIMINAR"
+            android:text="Eliminar Usuario"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -4,54 +4,54 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-            android:allowBackup="true"
-            android:dataExtractionRules="@xml/data_extraction_rules"
-            android:fullBackupContent="@xml/backup_rules"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:supportsRtl="true"
-            android:theme="@style/Theme.ProyectoDAM_FINAL"
-            android:usesCleartextTraffic="true">
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProyectoDAM_FINAL"
+        android:usesCleartextTraffic="true">
         <activity
-                android:name=".DeleteGestion"
-                android:exported="false"/>
+            android:name=".DeleteGestion"
+            android:exported="false"/>
         <activity
-                android:name=".CreateGestion"
-                android:exported="false"/>
+            android:name=".CreateGestion"
+            android:exported="false"/>
         <activity
-                android:name=".create.CreateBooking"
-                android:exported="false">
+            android:name=".create.CreateBooking"
+            android:exported="false">
             <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
+                android:name="android.app.lib_name"
+                android:value=""/>
         </activity>
         <activity
-                android:name=".create.CreateTorneos"
-                android:exported="false">
+            android:name=".create.CreateTorneos"
+            android:exported="false">
             <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
+                android:name="android.app.lib_name"
+                android:value=""/>
         </activity>
         <activity
-                android:name=".create.CreatePrecios"
-                android:exported="false">
+            android:name=".create.CreatePrecios"
+            android:exported="false">
             <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
+                android:name="android.app.lib_name"
+                android:value=""/>
         </activity>
         <activity
-                android:name=".create.CreateUsers"
-                android:exported="false">
+            android:name=".create.CreateUsers"
+            android:exported="false">
             <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
+                android:name="android.app.lib_name"
+                android:value=""/>
         </activity>
         <activity
-                android:name=".ListGestion"
-                android:exported="false"/>
+            android:name=".ListGestion"
+            android:exported="false"/>
         <activity
-                android:name=".MainActivity"
-                android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -59,18 +59,18 @@
             </intent-filter>
 
             <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
+                android:name="android.app.lib_name"
+                android:value=""/>
         </activity>
         <activity
-                android:name="com.example.proyectodam_final.delete.DeleteTorneo"
-        />
+            android:name="com.example.proyectodam_final.delete.DeleteTorneo"
+            />
         <activity
-                android:name="com.example.proyectodam_final.delete.DeleteUser"
-        />
+            android:name="com.example.proyectodam_final.delete.DeleteUser"
+            />
         <activity
-                android:name="com.example.proyectodam_final.delete.DeletePrecio"
-        />
+            android:name="com.example.proyectodam_final.delete.DeletePrecio"
+            />
         <activity android:name="com.example.proyectodam_final.list.ListUsers"
             />
         <activity android:name="com.example.proyectodam_final.list.ListTournament"
@@ -78,6 +78,8 @@
         <activity android:name="com.example.proyectodam_final.list.ListBooking"
             />
         <activity android:name="com.example.proyectodam_final.list.ListPrecios"
+            />
+        <activity android:name="com.example.proyectodam_final.delete.DeleteBooking"
             />
     </application>
 
