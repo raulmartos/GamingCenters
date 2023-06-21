@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.proyectodam_final.R;
-import com.example.proyectodam_final.UsernameCheckCallback;
+import com.example.proyectodam_final.callbacks.UsernameCheckCallback;
 import com.example.proyectodam_final.list.UserIconAdapter;
 import com.example.proyectodam_final.pojo.User;
 import com.google.firebase.database.DataSnapshot;

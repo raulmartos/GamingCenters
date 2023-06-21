@@ -10,6 +10,9 @@ public class Tournament implements Serializable {
     private double priceEntry, reward;
     private int totalPlayers;
 
+    public Tournament() {
+    }
+
     public Tournament(String title, String date, String hour, String location, double priceEntry, double reward,
                       String platform, int totalPlayers) {
         this.title = title;
@@ -26,32 +29,63 @@ public class Tournament implements Serializable {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDate() {
         return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getHour() {
         return hour;
     }
 
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
     public String getLocation() {
         return location;
     }
 
-    public double getPriceEntry() {
-        return priceEntry;
-    }
-
-    public double getReward() {
-        return reward;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getPlatform() {
         return platform;
     }
 
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public double getPriceEntry() {
+        return priceEntry;
+    }
+
+    public void setPriceEntry(double priceEntry) {
+        this.priceEntry = priceEntry;
+    }
+
+    public double getReward() {
+        return reward;
+    }
+
+    public void setReward(double reward) {
+        this.reward = reward;
+    }
+
     public int getTotalPlayers() {
         return totalPlayers;
     }
 
+    public void setTotalPlayers(int totalPlayers) {
+        this.totalPlayers = totalPlayers;
+    }
 }

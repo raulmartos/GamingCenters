@@ -29,8 +29,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -62,6 +60,7 @@ public class CreateBooking extends AppCompatActivity {
 
     private void elementMatcher() {
         btnAddBooking = findViewById(R.id.btnAgregarRes);
+
         spSilla = findViewById(R.id.spSilla);
         edtCliente = findViewById(R.id.edtCliente);
         edtFecha = findViewById(R.id.edtFecha);
