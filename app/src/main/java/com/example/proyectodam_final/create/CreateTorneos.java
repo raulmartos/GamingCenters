@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import com.example.proyectodam_final.R;
+import com.example.proyectodam_final.callbacks.TournamentTitleCheckCallback;
 import com.example.proyectodam_final.delete.DeleteTorneo;
 import com.example.proyectodam_final.pojo.Tournament;
 import com.google.firebase.database.*;
@@ -157,9 +158,7 @@ public class CreateTorneos extends AppCompatActivity {
         });
     }
 
-    interface TournamentTitleCheckCallback {
-        void onTournamentTitleChecked(int result);
-    }
+
 
     private boolean valueChecker() {
         return !edtJugadores.getText().toString().isEmpty()

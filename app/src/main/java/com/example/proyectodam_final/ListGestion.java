@@ -5,10 +5,9 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyectodam_final.create.CreatePrecios;
-import com.example.proyectodam_final.create.CreateTorneos;
-import com.example.proyectodam_final.create.CreateUsers;
 import com.example.proyectodam_final.list.ListBooking;
 import com.example.proyectodam_final.list.ListTournament;
+import com.example.proyectodam_final.list.ListUsers;
 
 public class ListGestion extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class ListGestion extends AppCompatActivity {
         btnTorneos = findViewById(R.id.btnTorneos);
 
         btnUsers.setOnClickListener(view -> {
-            Intent intent = new Intent(ListGestion.this, CreateUsers.class);
+            Intent intent = new Intent(ListGestion.this, ListUsers.class);
             startActivity(intent);
         });
 

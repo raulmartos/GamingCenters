@@ -10,6 +10,9 @@ public class User {
     private String role;
     private String icon;
 
+    public User() {
+    }
+
     public User(String name, String lastName, String birthday, String email, String password, String role, String icon) {
         this.name = name;
         this.lastName = lastName;
@@ -18,6 +21,14 @@ public class User {
         this.password = password;
         this.role = role;
         this.icon = icon;
+    }
+
+    public User(String name, String lastName, String email, String birthday, String role) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.birthday = birthday;
+        this.role = role;
     }
 
     public User(String name) {

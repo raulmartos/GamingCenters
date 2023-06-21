@@ -87,6 +87,8 @@
         <activity
                 android:name="com.example.proyectodam_final.delete.DeletePrecio"
         />
+        <activity android:name="com.example.proyectodam_final.list.ListUsers"
+            />
     </application>
 
 </manifest>
