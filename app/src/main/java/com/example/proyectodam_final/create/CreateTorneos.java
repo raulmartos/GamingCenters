@@ -48,7 +48,7 @@ public class CreateTorneos extends AppCompatActivity {
         spLugar = findViewById(R.id.spLugar);
         spPlat = findViewById(R.id.spPlataforma);
         spHora = findViewById(R.id.spHora);
-        btAdd = findViewById(R.id.btnAgregar);
+        btAdd = findViewById(R.id.btnAgregarTorneo);
     }
 
     private void spinnerInfoLugar() {
