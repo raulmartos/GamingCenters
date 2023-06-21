@@ -29,6 +29,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,7 +56,7 @@ public class CreateBooking extends AppCompatActivity {
         setContentView(R.layout.activity_reservas);
         elementMatcher();
         spinnerInfo();
-        //autoUpdateStatus();
+        autoUpdateStatus();
         edtFecha.setOnClickListener(v -> datePicker());
         btnAddBooking.setOnClickListener(v -> updateBooking());
     }
@@ -90,7 +93,7 @@ public class CreateBooking extends AppCompatActivity {
                             } catch (ParseException e) {
                                 throw new RuntimeException(e);
                             }
-                            if(newDate != null && bookingDate != null){
+                            if (newDate != null && bookingDate != null) {
                                 if (status.equals("booked") && invalidDate(newDate, bookingDate)) {
                                     Toast.makeText(CreateBooking.this, "Reserva no disponible", Toast.LENGTH_SHORT).show();
                                 } else {
@@ -192,7 +195,7 @@ public class CreateBooking extends AppCompatActivity {
         return Instant.now().getEpochSecond();
     }
 
-    /*private void autoUpdateStatus(){
+    private void autoUpdateStatus() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("bookings");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -205,7 +208,10 @@ public class CreateBooking extends AppCompatActivity {
                         if (bookingDate.isEqual(today) || bookingDate.isBefore(today)) {
                             snapshot.getRef().child("user").setValue("");
                             snapshot.getRef().child("status").setValue("free");
+                            snapshot.getRef().child("createdAt").setValue(0);
+                            snapshot.getRef().child("date").setValue("01/01/1970");
                         }
+
                     }
                 }
             }
@@ -215,7 +221,8 @@ public class CreateBooking extends AppCompatActivity {
                 Toast.makeText(CreateBooking.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-    }*/
+    }
+
     private boolean invalidDate(Date newDate, Date bookingDate) {
         return newDate.before(bookingDate) || newDate.equals(bookingDate);
     }

@@ -6,6 +6,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.proyectodam_final.create.CreatePrecios;
 import com.example.proyectodam_final.list.ListBooking;
+import com.example.proyectodam_final.list.ListPrecios;
 import com.example.proyectodam_final.list.ListTournament;
 import com.example.proyectodam_final.list.ListUsers;
 
@@ -29,7 +30,7 @@ public class ListGestion extends AppCompatActivity {
         });
 
         btnPrecio.setOnClickListener(view -> {
-            Intent intent = new Intent(ListGestion.this, CreatePrecios.class);
+            Intent intent = new Intent(ListGestion.this, ListPrecios.class);
             startActivity(intent);
         });
 

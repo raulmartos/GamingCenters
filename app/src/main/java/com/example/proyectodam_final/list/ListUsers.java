@@ -20,26 +20,26 @@ import java.util.ArrayList;
 
 public class ListUsers extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    UserAdapter userAdapter;
-    ArrayList<User> userList;
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_users);
+        listUsers();
+    }
 
-        recyclerView = findViewById(R.id.userList);
+    private void listUsers() {
+        RecyclerView recyclerView = findViewById(R.id.userList);
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        userList = new ArrayList<>();
-        userAdapter = new UserAdapter(this,userList);
+        ArrayList<User> userList = new ArrayList<>();
+        UserAdapter userAdapter = new UserAdapter(this, userList);
         recyclerView.setAdapter(userAdapter);
 
         ref.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User user = dataSnapshot.getValue(User.class);
                     userList.add(user);
                 }

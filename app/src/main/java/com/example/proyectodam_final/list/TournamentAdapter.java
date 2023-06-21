@@ -1,58 +1,75 @@
 package com.example.proyectodam_final.list;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectodam_final.R;
 import com.example.proyectodam_final.pojo.Tournament;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class TournamentAdapter {
+public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.MyViewHolder>{
 
-    private List<Tournament> tournaments;
-    private LinearLayout linearLayout;
+    Context context;
+    ArrayList<Tournament> tournamentList;
 
-    public TournamentAdapter(List<Tournament> tournaments) {
-        this.tournaments = tournaments;
-        this.linearLayout = linearLayout;
+
+    public TournamentAdapter(Context context, ArrayList<Tournament> tournamentList) {
+        this.context = context;
+        this.tournamentList = tournamentList;
     }
 
-    public void setTournaments(List<Tournament> tournaments) {
-        this.tournaments = tournaments;
-        updateView();
+    @NonNull
+    @Override
+    public TournamentAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.list_tournament_item, parent, false);
+        return new TournamentAdapter.MyViewHolder(v);
     }
 
-    private void updateView() {
-        LayoutInflater inflater = LayoutInflater.from(linearLayout.getContext());
-        linearLayout.removeAllViews();
-        for (Tournament tournament : tournaments) {
-            View itemView = inflater.inflate(R.layout.list_tournament, linearLayout, false);
-            TextView titleTextView = itemView.findViewById(R.id.tvTitle);
-            TextView dateTextView = itemView.findViewById(R.id.tvDateT);
-            TextView hourTextView = itemView.findViewById(R.id.tvHour);
-            TextView locationTextView = itemView.findViewById(R.id.tvLocation);
-            TextView priceEntryTextView = itemView.findViewById(R.id.tvPriceEntry);
-            TextView rewardTextView = itemView.findViewById(R.id.tvReward);
-            TextView platformTextView = itemView.findViewById(R.id.tvPlatform);
-            TextView totalPlayersTextView = itemView.findViewById(R.id.tvTotalPlayers);
-            //ImageView backgroundImageView = itemView.findViewById(R.id.ivBackground);
+    @Override
+    public void onBindViewHolder(@NonNull TournamentAdapter.MyViewHolder holder, int position) {
+        Tournament tournament = tournamentList.get(position);
+        holder.titulo.setText(tournament.getTitle());
+        holder.ubicacion.setText(tournament.getLocation());
+        holder.fecha.setText(tournament.getDate());
+        holder.hora.setText(tournament.getHour());
+        holder.plataforma.setText(tournament.getPlatform());
+        holder.precio.setText(doubleParser(tournament.getPriceEntry()));
+        holder.premio.setText(doubleParser(tournament.getReward()));
+        holder.jugadores.setText(intParser(tournament.getTotalPlayers()));
+    }
 
-            titleTextView.setText(tournament.getTitle());
-            dateTextView.setText(tournament.getDate());
-            hourTextView.setText(tournament.getHour());
-            locationTextView.setText(tournament.getLocation());
-            priceEntryTextView.setText(String.valueOf(tournament.getPriceEntry()));
-            rewardTextView.setText(String.valueOf(tournament.getReward()));
-            platformTextView.setText(tournament.getPlatform());
-            totalPlayersTextView.setText(String.valueOf(tournament.getTotalPlayers()));
-            // Aquí puedes cargar la imagen de fondo del torneo usando Picasso o Glide, por ejemplo:
-            // Picasso.get().load(tournament.getBackground()).into(backgroundImageView);
+    @Override
+    public int getItemCount() {
+        return tournamentList.size();
+    }
 
-            linearLayout.addView(itemView);
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        TextView titulo, ubicacion, fecha, hora, plataforma, precio, premio, jugadores;
+
+        public MyViewHolder(@NonNull View itemView){
+            super(itemView);
+            titulo = itemView.findViewById(R.id.tvTitle);
+            ubicacion = itemView.findViewById(R.id.tvLocation);
+            fecha = itemView.findViewById(R.id.tvDate);
+            hora = itemView.findViewById(R.id.tvHour);
+            plataforma = itemView.findViewById(R.id.tvPlatform);
+            precio = itemView.findViewById(R.id.tvPrice);
+            premio = itemView.findViewById(R.id.tvPremio);
+            jugadores = itemView.findViewById(R.id.tvPlayers);
         }
     }
-
+    protected static String doubleParser(double value){
+        return Double.toString(value);
+    }
+    protected static String intParser(int value){
+        return Integer.toString(value);
+    }
 }

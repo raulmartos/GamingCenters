@@ -4,6 +4,9 @@ public class Price {
     private String type;
     private Double price;
 
+    public Price() {
+    }
+
     public Price(String type, Double price) {
         this.type = type;
         this.price = price;
