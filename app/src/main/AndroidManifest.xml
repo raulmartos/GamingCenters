@@ -14,6 +14,7 @@
             android:theme="@style/Theme.ProyectoDAM_FINAL"
             android:usesCleartextTraffic="true"
             tools:targetApi="31">
+
         <activity
                 android:name=".DeleteGestion"
                 android:exported="false"/>
@@ -27,6 +28,9 @@
                     android:name="android.app.lib_name"
                     android:value=""/>
         </activity>
+        <activity
+                android:name=".delete.DeleteBooking"
+                android:exported="false"/>
         <activity
                 android:name=".create.CreateTorneos"
                 android:exported="false">
@@ -78,15 +82,9 @@
                     android:name="android.app.lib_name"
                     android:value=""/>
         </activity>
-        <activity
-                android:name="com.example.proyectodam_final.delete.DeleteTorneo"
-        />
-        <activity
-                android:name="com.example.proyectodam_final.delete.DeleteUser"
-        />
-        <activity
-                android:name="com.example.proyectodam_final.delete.DeletePrecio"
-        />
+        <activity android:name=".delete.DeleteTorneo"/>
+        <activity android:name=".delete.DeleteUser"/>
+        <activity android:name=".delete.DeletePrecio"/>
         <activity android:name="com.example.proyectodam_final.list.ListUsers"
             />
     </application>

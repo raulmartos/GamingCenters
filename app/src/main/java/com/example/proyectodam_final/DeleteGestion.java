@@ -3,6 +3,7 @@ package com.example.proyectodam_final;
 import android.content.Intent;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.proyectodam_final.delete.DeleteBooking;
 import com.example.proyectodam_final.delete.DeletePrecio;
 import com.example.proyectodam_final.delete.DeleteTorneo;
 import android.os.Bundle;
@@ -36,10 +37,10 @@ public class DeleteGestion extends AppCompatActivity {
             startActivity(intent);
         });
 
-        /*btnReservas.setOnClickListener(view -> {
+        btnReservas.setOnClickListener(view -> {
             Intent intent = new Intent(DeleteGestion.this, DeleteBooking.class);
             startActivity(intent);
-        });*/
+        });
 
         btnTorneos.setOnClickListener(view -> {
             Intent intent = new Intent(DeleteGestion.this, DeleteTorneo.class);

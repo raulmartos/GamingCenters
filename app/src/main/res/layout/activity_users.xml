@@ -162,7 +162,7 @@
         android:layout_height="59dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/button"
-        android:text="AGREGAR"
+        android:text="Añadir Usuario"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
