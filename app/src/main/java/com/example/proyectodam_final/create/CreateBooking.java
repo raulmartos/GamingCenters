@@ -96,6 +96,8 @@ public class CreateBooking extends AppCompatActivity {
                             if (newDate != null && bookingDate != null) {
                                 if (status.equals("booked") && invalidDate(newDate, bookingDate)) {
                                     Toast.makeText(CreateBooking.this, "Reserva no disponible", Toast.LENGTH_SHORT).show();
+                                } else if(beforeToday(newDate)){
+                                    Toast.makeText(CreateBooking.this, "Fecha inválida", Toast.LENGTH_SHORT).show();
                                 } else {
                                     booking.setUser(edtCliente.getText().toString());
                                     booking.setDate(validateDate());
@@ -226,4 +228,9 @@ public class CreateBooking extends AppCompatActivity {
     private boolean invalidDate(Date newDate, Date bookingDate) {
         return newDate.before(bookingDate) || newDate.equals(bookingDate);
     }
+    private boolean beforeToday(Date newDate){
+        Date today = new Date();
+        return newDate.before(today);
+    }
+
 }

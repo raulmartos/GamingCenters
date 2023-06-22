@@ -3,6 +3,7 @@ package com.example.proyectodam_final.create;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -78,7 +80,9 @@ public class CreateUsers extends AppCompatActivity {
             Toast.makeText(CreateUsers.this, "Debes seleccionar un icono", Toast.LENGTH_SHORT).show();
         } else if (!emailValidator(edtEmail.getText().toString())) {
             Toast.makeText(CreateUsers.this, "El email debe tener un formato válido", Toast.LENGTH_SHORT).show();
-        } else {
+        } else if (!adultChecker(validateDate())){
+            Toast.makeText(CreateUsers.this, "Es necesario ser mayor de edad", Toast.LENGTH_SHORT).show();
+        }else {
             usernameChecker(userName, result -> {
                 if (result == 0) {
                     Toast.makeText(CreateUsers.this, "El nombre de usuario ya existe", Toast.LENGTH_SHORT).show();
@@ -200,5 +204,20 @@ public class CreateUsers extends AppCompatActivity {
             return iconList.get(selectedPosition - 1);
         }
         return "";
+    }
+
+    private boolean adultChecker(String userDate){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, -18);
+        Date minimum = calendar.getTime();
+        try {
+            Date userInput = dateFormat.parse(userDate);
+            if (userInput != null && userInput.after(minimum)) {
+                return false;
+            }
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 }

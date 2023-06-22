@@ -76,7 +76,7 @@ public class DeleteBooking extends AppCompatActivity {
 
                 // Vaciar los campos dentro de la instancia
                 bookingRef.child("createdAt").setValue(0);
-                bookingRef.child("date").setValue("");
+                bookingRef.child("date").setValue("01/01/1970");
                 bookingRef.child("status").setValue("free");
                 bookingRef.child("user").setValue("");
 
